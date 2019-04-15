@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 0;
+  background:#efefef;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root{
+	max-width:405px;
+	margin:80px auto;
+}
+#calculator{
+	border: 2px solid #000;
+    border-radius: 5px;
+    background:#000;
+}
+
+.left{
+	width:66%;
+	display:inline-block;
+}
+.right{
+	width:33%;
+	display:inline-block;
+}
+
+.operators{
+	text-align: right;
+}
+
+button{
+		margin:2.5px!important;
+			min-width:76.61px;
+}
+.top-row{
+	display:flex;
+}
+.power{
+	flex-grow: 1;
+}
+
+.zero{
+	flex-grow:1;
+}
+
+.input{
+	width:95%;
+	margin:10px;
+}
+
+
+.outputContainer{
+	background: #fff;
+    width: 97%;
+    height: 3rem;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
+    overflow:hidden;
+}
+
+.output{
+	text-align: right!important;
+	font-family: 'Press Start 2P', cursive!important;
+	font-size:1.2rem;
+}
+
+.numbers button.clear {
+	display: block;
+    width: 97%;
+}
