@@ -1,9 +1,13 @@
 import React from 'react';
 
 const Output = (props) => {
+	const numbers = props.numbersToOutput.map((number) => {
+        return `${number}`
+    });
+
 	return(
-<div className="outputContainer">
-<div className="output">{`${props.onChange}`}</div>
+	<div className="ui input">
+  <input type="text" readOnly value={numbers.join('')} />
 </div>
 	)
 }

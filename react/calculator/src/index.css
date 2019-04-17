@@ -25,10 +25,11 @@ body {
 .right{
 	width:33%;
 	display:inline-block;
+	text-align: right;
 }
 
-.operators{
-	text-align: right;
+.input input{
+	text-align: right!important;
 }
 
 button{
