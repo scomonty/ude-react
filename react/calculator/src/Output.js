@@ -1,13 +1,10 @@
 import React from 'react';
 
 const Output = (props) => {
-	const numbers = props.numbersToOutput.map((number) => {
-        return `${number}`
-    });
 
 	return(
 	<div className="ui input">
-  <input type="text" readOnly value={numbers.join('')} />
+  <input type="text" readOnly value={props.total} />
 </div>
 	)
 }
