@@ -41,7 +41,6 @@ class App extends React.Component {
                 this.setState({ number: firstNum });
             }
         }
-
         //if not a number or decimal its an opperator
         else {
             if (this.state.number > 0) {
@@ -75,12 +74,10 @@ class App extends React.Component {
                         firstNum = '';
                         opperatorNotPressed = true;
                     }
-                    console.log(secondNum + 'inner secondNum')
                 }
                 if (firstNum !== ''){
                 secondNum = parseInt(firstNum);
                 firstNum = '';
-                console.log(secondNum + 'outer firstNum');
               }
             }
         }
@@ -95,7 +92,7 @@ class App extends React.Component {
 		  		<Numbers sty="primary huge" clear={this.onClearClick} press={this.getKeyPress} />
 		  	</div>
 		  	<div className="right">
-	  			<Operators sty="orange huge" press={this.getKeyPress} />
+	  			<Operators sty="ui inverted button orange huge operator" press={this.getKeyPress} />
 	  		</div>
 		</div>
 	</div>
