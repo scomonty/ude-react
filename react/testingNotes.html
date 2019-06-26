@@ -1,0 +1,94 @@
+https://www.youtube.com/watch?v=r9HdJ8P6GQI
+
+npm install --save-dev jest
+
+<--- unit test --- > //test single unit - ie function
+const { functionToRunLessParenthesis } = require('./filenamewherefunctionis');
+
+test('should output name and age', () => {
+	const text = functionToRunLessParenthesis('Max', 29);
+	expect(text).toBe('Max (29 years old)');
+});
+to run - 'npm test'
+
+<---- end unit test --->
+
+<--- integration test --->
+test('should generate a valid text output', () => {
+
+})
+
+
+<--- end to end tests --->
+npm install --save-dev puppeteer
+const puppeteer = require('puppeteer');
+
+test('should click around', async () => {
+	const browser = await puppeteer.launch({,
+	headless = false, // set to true to test and not have to see browser - runs much faster.
+	slowMo: 80,
+	args: ['--window-size=1920,1080']
+	})
+	const page = await browser.newPage();
+	await page.goTo('your URL');
+	await page.click('input#name');
+	await page.type('input#name', 'Anna');
+		await page.click('input#age');
+	await page.type('input#age', '28');
+	await page.click('$btnAddUser');
+	const finalText = await page.$eval('.user-item', el => el.textContent);
+	expect(finalText).toBe('Anna (28 years old)');
+}, 10000);
+
+
+
+
+
+
+react - lifecycle
+instance of component created
+initialize state object and assign this.state property
+
+react calls render method
+
+returns jsx gets rendered to page as html
+
+update state object
+
+react calls render again
+jsx gets re-rendered to page as html
+
+
+constructor - good place to do one time setup
+render - avoid doing anything besides returning jsx
+componentDidMount (content visible on screen) - good place to do data loading
+componentDidUpdate (sit and wait for updates) - do more data loading when state/props change
+componentWillUnmount (sit and wait until this component is no longer shown) - good place to do cleanup esp non-react stuff
+
+
+rarely used - 3
+shouldComponentUpdate
+getDerivedStateFromProps
+getSnapshotBeforeUpdate
+
+
+
+
+
+
+Marisa Foley
+
+how long is contact?
+what would normal week look like? set hours within a day?
+what OS do they use?  will it be provided?
+is this more of a design or dev position?
+
+--- starting with homepage ---
+---- university of Kansas case study ----
+--- trendy but don't like looking at your screen to see a picture in another screen
+'what we do' wish it would expand to full width and have some bullets
+
+Are willing to have the tough conversations if we believe an idea is not right for you
+
+0 - 20 hours week 3 months
+

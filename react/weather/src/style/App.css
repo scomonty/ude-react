@@ -1,0 +1,10 @@
+body{
+	color: #e3d3c6;
+		background: linear-gradient(#84a2ba 60%, #b6c7d5);
+}
+
+.app {
+	max-width:50%;
+	display:block;
+	margin:40px auto;
+}

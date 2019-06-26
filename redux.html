@@ -1,0 +1,73 @@
+redux
+
+cycle - action creator  --  action  --  dispatch  --  reducers  --  state
+
+action creator - function that returns JS object  - refered to action
+action has 'type' and 'payload' properties  - purpose to describe change to make to data inside application
+
+dispatch  -  take action, make copies, and pass off to orther parts of application
+
+reducers -  fuction that takes in action ; process action, return data
+
+state  -  all info gets consolidated inside state object
+
+// action creator example
+const createPolicy = (name, amount) => {
+	return {
+	// this is the action
+	type: 'Create a policy',
+	payload: {
+	//information about what is being sumbitted
+	name: name,
+	amount: amount
+	}
+	}
+}
+
+const createClaim = (name, amount) => {
+	return {
+	type: 'CREATE_CLAIM',
+	payload: {
+	name, amount
+	}
+	}
+}
+
+const deletePolicy = (name) => {
+	return {
+	type: 'DELETE_POLICY',
+	payload: {
+	name: name
+	}
+	}
+}
+
+
+
+// REDUCERS
+const claimsHistory = ( oldListOfClaims = [], action ) => {
+	if (action.type === 'CREATE_CLAIM') {
+		return [...oldListOfClaims, action.payload];
+	}
+	// if not a create claim action
+	return oldListOfClaims;
+}
+
+
+// REDUX STORE
+const { createStore, combineReducers } = Redux
+
+const ourDepartments = combineReducers({
+//names of reducers that were created
+	accounting: accounting,
+	claimsHistory: claimsHistory,
+	policies: policites
+});
+
+// create the store with all reducers included
+const store = createStore(ourDepartments);
+
+const action = createPolicy('Scott', 600)
+
+//call our dispatcher
+store.dispatch(action);
