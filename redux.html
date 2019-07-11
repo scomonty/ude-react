@@ -71,3 +71,13 @@ const action = createPolicy('Scott', 600)
 
 //call our dispatcher
 store.dispatch(action);
+
+
+-- Connect Function --
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+	return { songs: state.songs };
+}
+
+export default connect()( {pass in class component as second funciton call} );
