@@ -1,11 +1,12 @@
+import './style/Backgrounds.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import WeatherDetail from './WeatherDetail';
 import LocationDetail from './LocationDetail';
+import WeeklyDetail from './WeeklyDetail';
 
 class WeatherApi extends React.Component {
     //set our initial state to empty array
-    state = { weatherData: [], hourlyWeatherData: [], errorMessge: '' };
+    state = { weatherData: [], hourlyWeatherData: [], weeklyForecast: [], errorMessge: '' };
 
     componentWillMount() {
         window.navigator.geolocation.getCurrentPosition(
@@ -14,24 +15,38 @@ class WeatherApi extends React.Component {
             .then((response) => response.json())
             //set the state for weatherData
             .then((responseData) => this.setState({ weatherData: responseData }))
-            //call getLocalForcast one api data is returned and make second call to get local forecast
+            //call getLocalForcast once api data is returned and make second call to get local forecast
             .then(() => this.getLocalForcast(this.state.weatherData)),
             (err) => this.setState({ errorMessge: err.message })
         );
+
     }
 
     getLocalForcast(responseData) {
         //once we have the location forecast URL make call to second API for forecast details.
             const location = responseData.properties.forecastHourly;
+            const weekly = responseData.properties.forecast;
             fetch(location)
                 .then((response) => response.json())
                 //set the state to 5 day forecast data
                 .then((responseData) => this.setState({ hourlyWeatherData: responseData.properties.periods }));
+                fetch(weekly)
+        .then((response) => response.json())
+        //set the state to weekly forecast data
+        .then((responseData) => this.setState({ weeklyForecast: responseData.properties.periods }));
         }
 
+
     renderWeather() {
-        return this.state.hourlyWeatherData.map(weather => <WeatherDetail key={weather.number} weather={weather} />);
+        return this.state.hourlyWeatherData.slice(0, 24).map(weather => <WeatherDetail key={weather.number} weather={weather} />);
+        
     }
+
+    renderWeekly() {
+        return this.state.weeklyForecast.map(weekly => <WeeklyDetail key={weekly.number} weekly={weekly} />);
+        
+    }
+
     renderLocation() {
         if (this.state.weatherData.hasOwnProperty('properties')) {
             return <LocationDetail location={this.state.weatherData.properties.relativeLocation.properties} />
@@ -41,9 +56,14 @@ class WeatherApi extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={this.state.hourlyWeatherData.slice(0, 1).map( week => week.shortForecast.toLowerCase().replace(/\s/g, ""))}>
 {this.renderLocation()}
+<div className='TopSlider'>
 {this.renderWeather()}
+</div>
+<div className="detailContainer">
+    {this.renderWeekly()}
+    </div>
 			</div>
         )
     }

@@ -1,6 +1,5 @@
  import './style/App.css';
 import React from 'react';
-import logo from './logo.svg';
 import WeatherAPI from './WeatherAPI';
 
 function App() {
