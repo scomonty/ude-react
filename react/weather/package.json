@@ -1,5 +1,6 @@
 {
   "name": "weather",
+  "homepage": "https://scomonty.github.io/ude-react/react/weather/build/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
